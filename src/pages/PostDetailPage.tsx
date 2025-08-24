@@ -20,7 +20,7 @@ export default function PostDetailPage(){
       <img src={post.image_url} alt="" style={{width:'100%', maxHeight:480, objectFit:'cover', borderRadius:'var(--radius)'}} />
       <h1 className="h1" style={{marginTop:'1rem'}}>{post.title}</h1>
       <p style={{color:'var(--muted)'}}>
-        {author ? <>By <strong>{author.name}</strong></> : '—'} · {new Date(post.created_at).toLocaleDateString()}
+        {author ? <>By <strong>{author.name}</strong></> : '—'} · {new Date(post.createdAt).toLocaleDateString()}
         {category && <> · <span className="pill">{category.name}</span></>}
       </p>
       <section style={{lineHeight:1.7, marginTop:'1rem'}}>

@@ -1,0 +1,217 @@
+/*
+ * Filter Bar Component Styles
+ * Mobile-first design with gradient background and pill-shaped filters
+ */
+
+.filter-bar {
+  background: linear-gradient(90deg, var(--neutral-lightest) 0%, var(--neutral-100) 100%);
+  border-bottom: 1px solid var(--neutral-200);
+  padding: 1rem 0;
+}
+
+.filter-bar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+/* Filter Dropdowns */
+.filter-dropdowns {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filter-dropdown {
+  position: relative;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--neutral-lightest);
+  border: 1px solid var(--secondary-300);
+  border-radius: 24px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-small);
+  font-weight: var(--font-weight-regular);
+  color: var(--secondary-300);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+  justify-content: space-between;
+  
+  &:hover {
+    background-color: var(--neutral-100);
+    border-color: var(--secondary-200);
+    color: var(--secondary-200);
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.filter-chevron {
+  transition: transform 0.2s ease;
+  
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+/* Dropdown Menu */
+.filter-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--neutral-lightest);
+  border: 1px solid var(--neutral-200);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  margin-top: 0.25rem;
+  min-width: 140px;
+  animation: slideDown 0.2s ease-out;
+}
+
+.filter-option {
+  padding: 0.75rem 1rem;
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-small);
+  color: var(--neutral-darkest);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid var(--neutral-100);
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  &:hover {
+    background-color: var(--neutral-100);
+  }
+  
+  &:active {
+    background-color: var(--neutral-200);
+  }
+}
+
+/* Sort Section */
+.filter-sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.sort-label {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-small);
+  font-weight: var(--font-weight-regular);
+  color: var(--neutral-darkest);
+  white-space: nowrap;
+}
+
+.sort-button {
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    background-color: var(--neutral-200);
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.sort-icon {
+  color: var(--secondary-100);
+  width: 16px;
+  height: 16px;
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .filter-bar__container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .filter-dropdowns {
+    justify-content: center;
+  }
+  
+  .filter-sort {
+    margin-left: 0;
+    justify-content: center;
+  }
+  
+  .filter-button {
+    min-width: 120px;
+  }
+}
+
+/* Tablet and Desktop Responsive */
+@media (min-width: 768px) {
+  .filter-bar {
+    padding: 1.25rem 0;
+  }
+  
+  .filter-bar__container {
+    padding: 0 2rem;
+  }
+  
+  .filter-button {
+    min-width: 120px;
+    padding: 0.625rem 1.25rem;
+    font-size: var(--font-size-body-large);
+  }
+  
+  .filter-option {
+    font-size: var(--font-size-body-large);
+    padding: 0.875rem 1.25rem;
+  }
+  
+  .sort-label {
+    font-size: var(--font-size-body-large);
+  }
+}
+
+@media (min-width: 1024px) {
+  .filter-bar__container {
+    padding: 0 2rem;
+  }
+  
+  .filter-button {
+    min-width: 140px;
+  }
+} 

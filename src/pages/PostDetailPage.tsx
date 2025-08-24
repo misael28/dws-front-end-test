@@ -18,7 +18,7 @@ export default function PostDetailPage(){
         <Link to="/" className="pill">← Back</Link>
       </nav>
       <img src={post.image_url} alt="" style={{width:'100%', maxHeight:480, objectFit:'cover', borderRadius:'var(--radius)'}} />
-      <h1 style={{marginTop:'1rem'}}>{post.title}</h1>
+      <h1 className="h1" style={{marginTop:'1rem'}}>{post.title}</h1>
       <p style={{color:'var(--muted)'}}>
         {author ? <>By <strong>{author.name}</strong></> : '—'} · {new Date(post.created_at).toLocaleDateString()}
         {category && <> · <span className="pill">{category.name}</span></>}

@@ -1,0 +1,161 @@
+/*
+ * Typography System - Open Sans Font Family
+ * 
+ * This file contains the complete typography system based on the design specification.
+ * 
+ * Font Family: Open Sans
+ * Weights: 400 (Regular), 600 (Semibold), 700 (Bold)
+ * 
+ * Typography Scale:
+ * - H1: 56px / 3.5rem (Bold, 130% line height)
+ * - H2: 36px / 2.25rem (Bold, 130% line height)  
+ * - H3: 20px / 1.25rem (Bold, 130% line height)
+ * - Body/Large: 16px / 1rem (Regular/Semibold, 150% line height)
+ * - Body/Small: 14px / 0.875rem (Regular, 150% line height)
+ * - Caption: 12px / 0.75rem (Regular, 130% line height)
+ */
+
+/* Typography CSS Variables - Exported for use with @use */
+:root {
+  --font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  
+  /* Font Sizes */
+  --font-size-h1: 56px;
+  --font-size-h1-rem: 3.5rem;
+  --font-size-h2: 36px;
+  --font-size-h2-rem: 2.25rem;
+  --font-size-h3: 20px;
+  --font-size-h3-rem: 1.25rem;
+  --font-size-body-large: 16px;
+  --font-size-body-large-rem: 1rem;
+  --font-size-body-small: 14px;
+  --font-size-body-small-rem: 0.875rem;
+  --font-size-caption: 12px;
+  --font-size-caption-rem: 0.75rem;
+  
+  /* Line Heights */
+  --line-height-h1: 130%;
+  --line-height-h2: 130%;
+  --line-height-h3: 130%;
+  --line-height-body: 150%;
+  --line-height-caption: 130%;
+  
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
+/* Base Typography */
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-large);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-regular);
+}
+
+/* Heading Styles */
+.h1 {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.h2 {
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.h3 {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+}
+
+/* Body Text Styles */
+.body-large {
+  font-size: var(--font-size-body-large);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-regular);
+}
+
+.body-large-semibold {
+  font-size: var(--font-size-body-large);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-semibold);
+}
+
+.body-small {
+  font-size: var(--font-size-body-small);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-regular);
+}
+
+.caption {
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  font-weight: var(--font-weight-regular);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .h1 {
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-h2);
+  }
+  
+  .h2 {
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-h3);
+  }
+}
+
+/* Typography Utility Classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-regular { font-weight: var(--font-weight-regular); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+
+.no-margin { margin: 0; }
+.margin-bottom { margin-bottom: 1rem; }
+.margin-top { margin-top: 1rem; }
+
+/* Semantic Typography */
+h1, .h1 { @extend .h1; }
+h2, .h2 { @extend .h2; }
+h3, .h3 { @extend .h3; }
+
+p, .body { @extend .body-large; }
+
+/* Link Typography */
+a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Form Typography */
+input, textarea, select {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-large);
+  line-height: var(--line-height-body);
+}
+
+/* Button Typography */
+button {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semibold);
+} 

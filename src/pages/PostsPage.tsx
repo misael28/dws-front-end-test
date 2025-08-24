@@ -8,7 +8,7 @@ export default function PostsPage(){
   const { data: authors } = useGetAuthorsQuery()
   const { data: categories } = useGetCategoriesQuery()
   const search = useAppSelector(s => s.ui.search).toLowerCase()
-
+  console.log(posts, 'posts')
   const authorMap = useMemo(() => new Map((authors ?? []).map(a => [a.id, a])), [authors])
   const catMap = useMemo(() => new Map((categories ?? []).map(c => [c.id, c])), [categories])
 

@@ -3,11 +3,12 @@ export interface Post {
   title: string;
   description: string;
   image_url: string;
-  created_at: string;
-  updated_at: string;
+  createdAt: string;
+  updatedAt: string;
   author_id: number;
   category_id: number;
   content?: string;
+  thumbnail_url?: string;
 }
 
 export interface Author {

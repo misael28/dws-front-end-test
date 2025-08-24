@@ -5,7 +5,7 @@ export default function PostCard({ post, author, category }: { post: Post; autho
   return (
     <article className="card">
       <Link to={`/post/${post.id}`} aria-label={`Open post ${post.title}`}>
-        <img className="card__image" src={post.image_url} alt="" loading="lazy" />
+        <img className="card__image" src={post.thumbnail_url} alt="" loading="lazy" />
       </Link>
       <div className="card__body">
         <div style={{display:'flex', gap:'.5rem', flexWrap:'wrap', marginBottom:'.5rem'}}>
@@ -15,7 +15,7 @@ export default function PostCard({ post, author, category }: { post: Post; autho
         <h3 className="card__title">
           <Link to={`/post/${post.id}`}>{post.title}</Link>
         </h3>
-        <div className="card__meta">{new Date(post.created_at).toLocaleDateString()}</div>
+        <div className="card__meta">{new Date(post.createdAt).toLocaleDateString()}</div>
       </div>
     </article>
   )

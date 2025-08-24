@@ -1,0 +1,64 @@
+/*
+ * Color System Index
+ * 
+ * This file imports all color palette files to create a comprehensive color system.
+ * Import this file in your main styles to access all color variables and utilities.
+ */
+
+/* Import Color Palettes */
+@use './neutrals.scss';
+@use './primary.scss';
+@use './secondary.scss';
+
+/* Color System Documentation */
+/*
+ * Available Color Palettes:
+ * 
+ * 1. Neutrals (--neutral-*)
+ *    - Lightest: #F0F0F2
+ *    - Extra-Light: #E0E2E6  
+ *    - Light: #C0C2C8
+ *    - Medium: #9EA0A5
+ *    - Dark: #7F8185
+ *    - Extra-Dark: #5E5F63
+ *    - Darkest: #202122
+ * 
+ * 2. Primary (--primary-*)
+ *    - Light: #0B0E3A
+ *    - Medium: #060725
+ *    - Dark: #020318
+ * 
+ * 3. Secondary (--secondary-*)
+ *    - Light: #EF4C84
+ *    - Medium: #D31450
+ *    - Dark: #8C1038
+ * 
+ * Usage Examples:
+ * 
+ * CSS Variables:
+ *   color: var(--neutral-lightest);
+ *   background-color: var(--neutral-dark);
+ *   border-color: var(--neutral-medium);
+ * 
+ * Utility Classes:
+ *   <div class="bg-neutral-50">Light background</div>
+ *   <span class="text-neutral-400">Dark text</span>
+ *   <div class="border-neutral-200">Light border</div>
+ * 
+ * Semantic Variables:
+ *   color: var(--neutral-50);    // Same as --neutral-lightest
+ *   color: var(--neutral-100);   // Same as --neutral-extra-light
+ *   color: var(--neutral-200);   // Same as --neutral-light
+ *   color: var(--neutral-300);   // Same as --neutral-medium
+ *   color: var(--neutral-400);   // Same as --neutral-dark
+ *   color: var(--neutral-500);   // Same as --neutral-extra-dark
+ *   color: var(--neutral-600);   // Same as --neutral-darkest
+ * 
+ *   color: var(--primary-100);   // Same as --primary-light
+ *   color: var(--primary-200);   // Same as --primary-medium
+ *   color: var(--primary-300);   // Same as --primary-dark
+ * 
+ *   color: var(--secondary-100); // Same as --secondary-light
+ *   color: var(--secondary-200); // Same as --secondary-medium
+ *   color: var(--secondary-300); // Same as --secondary-dark
+ */ 

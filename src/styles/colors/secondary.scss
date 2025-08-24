@@ -1,0 +1,70 @@
+/*
+ * Secondary Color Palette
+ * 
+ * A collection of vibrant pink and red shades for secondary UI elements.
+ * These colors are used for accents, highlights, and secondary actions.
+ */
+
+:root {
+  /* Secondary Pink/Red Scale */
+  --secondary-light: #EF4C84;    /* Light - Vibrant pink */
+  --secondary-medium: #D31450;   /* Medium - Deeper, richer pink/fuchsia */
+  --secondary-dark: #8C1038;     /* Dark - Dark, muted red/burgundy */
+  
+  /* Semantic Secondary Variables */
+  --secondary-100: var(--secondary-light);
+  --secondary-200: var(--secondary-medium);
+  --secondary-300: var(--secondary-dark);
+  
+  /* Alternative Naming for Flexibility */
+  --pink-100: var(--secondary-light);
+  --pink-200: var(--secondary-medium);
+  --pink-300: var(--secondary-dark);
+  
+  --accent-100: var(--secondary-light);
+  --accent-200: var(--secondary-medium);
+  --accent-300: var(--secondary-dark);
+}
+
+/* Utility Classes for Secondary Colors */
+.secondary-light { color: var(--secondary-light); }
+.secondary-medium { color: var(--secondary-medium); }
+.secondary-dark { color: var(--secondary-dark); }
+
+.secondary-light-bg { background-color: var(--secondary-light); }
+.secondary-medium-bg { background-color: var(--secondary-medium); }
+.secondary-dark-bg { background-color: var(--secondary-dark); }
+
+.secondary-light-border { border-color: var(--secondary-light); }
+.secondary-medium-border { border-color: var(--secondary-medium); }
+.secondary-dark-border { border-color: var(--secondary-dark); }
+
+/* Semantic Utility Classes */
+.text-secondary-100 { color: var(--secondary-100); }
+.text-secondary-200 { color: var(--secondary-200); }
+.text-secondary-300 { color: var(--secondary-300); }
+
+.bg-secondary-100 { background-color: var(--secondary-100); }
+.bg-secondary-200 { background-color: var(--secondary-200); }
+.bg-secondary-300 { background-color: var(--secondary-300); }
+
+.border-secondary-100 { border-color: var(--secondary-100); }
+.border-secondary-200 { border-color: var(--secondary-200); }
+.border-secondary-300 { border-color: var(--secondary-300); }
+
+/* Alternative Naming Utility Classes */
+.text-pink-100 { color: var(--pink-100); }
+.text-pink-200 { color: var(--pink-200); }
+.text-pink-300 { color: var(--pink-300); }
+
+.bg-pink-100 { background-color: var(--pink-100); }
+.bg-pink-200 { background-color: var(--pink-200); }
+.bg-pink-300 { background-color: var(--pink-300); }
+
+.text-accent-100 { color: var(--accent-100); }
+.text-accent-200 { color: var(--accent-200); }
+.text-accent-300 { color: var(--accent-300); }
+
+.bg-accent-100 { background-color: var(--accent-100); }
+.bg-accent-200 { background-color: var(--accent-200); }
+.bg-accent-300 { background-color: var(--accent-300); } 

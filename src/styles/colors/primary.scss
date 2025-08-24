@@ -1,0 +1,49 @@
+/*
+ * Primary Color Palette
+ * 
+ * A collection of deep blue shades for primary UI elements.
+ * These colors are used for main actions, branding, and key interface elements.
+ */
+
+:root {
+  /* Primary Blue Scale */
+  --primary-light: #0B0E3A;    /* Light - Dark blue */
+  --primary-medium: #060725;   /* Medium - Darker blue, almost black */
+  --primary-dark: #020318;     /* Dark - Deepest blue, off-black */
+  
+  /* Semantic Primary Variables */
+  --primary-100: var(--primary-light);
+  --primary-200: var(--primary-medium);
+  --primary-300: var(--primary-dark);
+  
+  /* Alternative Naming for Flexibility */
+  --blue-100: var(--primary-light);
+  --blue-200: var(--primary-medium);
+  --blue-300: var(--primary-dark);
+}
+
+/* Utility Classes for Primary Colors */
+.primary-light { color: var(--primary-light); }
+.primary-medium { color: var(--primary-medium); }
+.primary-dark { color: var(--primary-dark); }
+
+.primary-light-bg { background-color: var(--primary-light); }
+.primary-medium-bg { background-color: var(--primary-medium); }
+.primary-dark-bg { background-color: var(--primary-dark); }
+
+.primary-light-border { border-color: var(--primary-light); }
+.primary-medium-border { border-color: var(--primary-medium); }
+.primary-dark-border { border-color: var(--primary-dark); }
+
+/* Semantic Utility Classes */
+.text-primary-100 { color: var(--primary-100); }
+.text-primary-200 { color: var(--primary-200); }
+.text-primary-300 { color: var(--primary-300); }
+
+.bg-primary-100 { background-color: var(--primary-100); }
+.bg-primary-200 { background-color: var(--primary-200); }
+.bg-primary-300 { background-color: var(--primary-300); }
+
+.border-primary-100 { border-color: var(--primary-100); }
+.border-primary-200 { border-color: var(--primary-200); }
+.border-primary-300 { border-color: var(--primary-300); } 

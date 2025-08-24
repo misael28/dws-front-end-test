@@ -1,0 +1,85 @@
+/*
+ * Neutral Color Palette
+ * 
+ * A collection of neutral gray shades for consistent UI design.
+ * These colors provide a foundation for backgrounds, borders, text, and other UI elements.
+ */
+
+:root {
+  /* Neutral Gray Scale */
+  --neutral-lightest: #F0F0F2;    /* Lightest - Very light gray, almost white */
+  --neutral-extra-light: #E0E2E6; /* Extra-Light - Light gray with slight blue tint */
+  --neutral-light: #C0C2C8;       /* Light - Medium light gray */
+  --neutral-medium: #9EA0A5;      /* Medium - True medium gray */
+  --neutral-dark: #7F8185;        /* Dark - Dark gray, almost charcoal */
+  --neutral-extra-dark: #5E5F63;  /* Extra-Dark - Very dark gray */
+  --neutral-darkest: #202122;     /* Darkest - Almost black gray */
+  
+  /* Semantic Neutral Variables */
+  --neutral-50: var(--neutral-lightest);
+  --neutral-100: var(--neutral-extra-light);
+  --neutral-200: var(--neutral-light);
+  --neutral-300: var(--neutral-medium);
+  --neutral-400: var(--neutral-dark);
+  --neutral-500: var(--neutral-extra-dark);
+  --neutral-600: var(--neutral-darkest);
+  
+  /* Alternative Naming for Flexibility */
+  --gray-50: var(--neutral-lightest);
+  --gray-100: var(--neutral-extra-light);
+  --gray-200: var(--neutral-light);
+  --gray-300: var(--neutral-medium);
+  --gray-400: var(--neutral-dark);
+  --gray-500: var(--neutral-extra-dark);
+  --gray-600: var(--neutral-darkest);
+}
+
+/* Utility Classes for Neutral Colors */
+.neutral-lightest { color: var(--neutral-lightest); }
+.neutral-extra-light { color: var(--neutral-extra-light); }
+.neutral-light { color: var(--neutral-light); }
+.neutral-medium { color: var(--neutral-medium); }
+.neutral-dark { color: var(--neutral-dark); }
+.neutral-extra-dark { color: var(--neutral-extra-dark); }
+.neutral-darkest { color: var(--neutral-darkest); }
+
+.neutral-lightest-bg { background-color: var(--neutral-lightest); }
+.neutral-extra-light-bg { background-color: var(--neutral-extra-light); }
+.neutral-light-bg { background-color: var(--neutral-light); }
+.neutral-medium-bg { background-color: var(--neutral-medium); }
+.neutral-dark-bg { background-color: var(--neutral-dark); }
+.neutral-extra-dark-bg { background-color: var(--neutral-extra-dark); }
+.neutral-darkest-bg { background-color: var(--neutral-darkest); }
+
+.neutral-lightest-border { border-color: var(--neutral-lightest); }
+.neutral-extra-light-border { border-color: var(--neutral-extra-light); }
+.neutral-light-border { border-color: var(--neutral-light); }
+.neutral-medium-border { border-color: var(--neutral-medium); }
+.neutral-dark-border { border-color: var(--neutral-dark); }
+.neutral-extra-dark-border { border-color: var(--neutral-extra-dark); }
+.neutral-darkest-border { border-color: var(--neutral-darkest); }
+
+/* Semantic Utility Classes */
+.text-neutral-50 { color: var(--neutral-50); }
+.text-neutral-100 { color: var(--neutral-100); }
+.text-neutral-200 { color: var(--neutral-200); }
+.text-neutral-300 { color: var(--neutral-300); }
+.text-neutral-400 { color: var(--neutral-400); }
+.text-neutral-500 { color: var(--neutral-500); }
+.text-neutral-600 { color: var(--neutral-600); }
+
+.bg-neutral-50 { background-color: var(--neutral-50); }
+.bg-neutral-100 { background-color: var(--neutral-100); }
+.bg-neutral-200 { background-color: var(--neutral-200); }
+.bg-neutral-300 { background-color: var(--neutral-300); }
+.bg-neutral-400 { background-color: var(--neutral-400); }
+.bg-neutral-500 { background-color: var(--neutral-500); }
+.bg-neutral-600 { background-color: var(--neutral-600); }
+
+.border-neutral-50 { border-color: var(--neutral-50); }
+.border-neutral-100 { border-color: var(--neutral-100); }
+.border-neutral-200 { border-color: var(--neutral-200); }
+.border-neutral-300 { border-color: var(--neutral-300); }
+.border-neutral-400 { border-color: var(--neutral-400); }
+.border-neutral-500 { border-color: var(--neutral-500); }
+.border-neutral-600 { border-color: var(--neutral-600); } 

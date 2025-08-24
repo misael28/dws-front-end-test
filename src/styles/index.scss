@@ -1,6 +1,9 @@
 /* Import Typography System */
 @use './typography.scss';
 
+/* Import Color System */
+@use './colors/index.scss';
+
 /* Mobile-first base styles */
 :root {
   --bg: #0e0e10;

@@ -9,13 +9,15 @@ export interface Post {
   category_id: number;
   content?: string;
   thumbnail_url?: string;
+  author?: Author;
 }
 
 export interface Author {
+  createdAt: string;
   id: number;
   name: string;
   avatar_url: string;
-  bio?: string;
+  updatedAt: string;
 }
 
 export interface Category {

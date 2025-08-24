@@ -45,7 +45,7 @@ export default function AppBar() {
                 height="20" 
                 viewBox="0 0 24 24" 
                 fill="none" 
-                stroke="currentColor" 
+                stroke="white" 
                 strokeWidth="2"
               >
                 <circle cx="11" cy="11" r="8"/>

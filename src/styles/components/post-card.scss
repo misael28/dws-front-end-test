@@ -1,0 +1,226 @@
+/*
+ * Post Card Component Styles
+ * Step 1: Basic structure and dimensions
+ * Mobile-first responsive design
+ */
+
+.post-card {
+  width: 100%;
+  max-width: 314px;
+  min-height: 380px;
+  height: auto;
+  border-radius: 16px;
+  background: var(--neutral-lightest);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-card__image {
+  width: 100%;
+  height: 196px;
+  min-height: 196px;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+}
+
+.post-card__content {
+  flex: 1;
+  min-height: 184px;
+  height: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Remove default gap, we'll control spacing manually */
+}
+
+/* Content container with specific dimensions */
+.post-card__text-container {
+  width: 100%;
+  max-width: 282px; /* 314px - 32px (16px padding on each side) */
+  min-height: 114px; /* Title (54px) + gap (8px) + description (52px) */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Remove default gap, we'll control spacing manually */
+}
+
+/* Metadata section */
+.post-card__meta {
+  height: 19px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-size-caption);
+  color: var(--neutral-medium);
+  margin-bottom: 16px; /* Reduced space below date/author line */
+}
+
+.post-card__date {
+  color: var(--neutral-darkest);
+}
+
+.post-card__separator {
+  width: 4px;
+  height: 4px;
+  background-color: var(--secondary-300);
+  border-radius: 50%;
+}
+
+.post-card__author {
+  color: var(--neutral-darkest);
+}
+
+/* Title section */
+.post-card__title {
+  height: auto;
+  font-family: var(--font-family);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-h3);
+  color: var(--neutral-darkest);
+  margin: 0 0 12px 0; /* Reduced space below title */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Description section */
+.post-card__description {
+  min-height: 3rem;
+  height: auto;
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-small);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  color: var(--neutral-medium);
+  margin: 0 0 12px 0; /* Reduced space below description */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Categories section */
+.post-card__categories {
+  width: 100%;
+  max-width: 180px;
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0 0 24px 0; /* Reduced space below categories */
+  margin-top: 0; /* Remove auto margin, we'll control spacing manually */
+  padding-top: 12px; /* Reduced space above categories */
+}
+
+.post-card__category {
+  min-width: 84px;
+  height: 32px;
+  background: var(--neutral-lightest);
+  border: 1px solid var(--neutral-200);
+  border-radius: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-regular);
+  color: var(--neutral-darkest);
+  padding: 8px 12px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: var(--neutral-100);
+    border-color: var(--neutral-300);
+    transform: translateY(-1px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* Mobile-first responsive adjustments */
+@media (max-width: 640px) {
+  .post-card {
+    max-width: 100%;
+    border-radius: 16px;
+    min-height: auto;
+  }
+  
+  .post-card__image {
+    border-radius: 16px 16px 0 0;
+  }
+  
+  .post-card__content {
+    padding: 16px;
+  }
+  
+  .post-card__text-container {
+    max-width: 100%;
+  }
+  
+  .post-card__title {
+    -webkit-line-clamp: 2;
+    max-height: 54px;
+  }
+  
+  .post-card__description {
+    -webkit-line-clamp: 2;
+    max-height: 52px;
+  }
+  
+  .post-card__categories {
+    max-width: 100%;
+    justify-content: flex-start;
+    padding: 16px 0 32px 0;
+  }
+}
+
+/* Tablet responsive adjustments */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .post-card {
+    max-width: 400px;
+    border-radius: 16px;
+  }
+  
+  .post-card__image {
+    border-radius: 16px 16px 0 0;
+  }
+  
+  .post-card__content {
+    padding: 18px;
+  }
+}
+
+/* Desktop - maintain adjusted design specs but allow flexibility */
+@media (min-width: 1024px) {
+  .post-card {
+    max-width: 314px;
+    min-height: 380px;
+    height: auto;
+  }
+  
+  .post-card__content {
+    min-height: 184px;
+    height: auto;
+  }
+  
+  .post-card__text-container {
+    width: 282px;
+    min-height: 114px;
+    height: auto;
+  }
+  
+  .post-card__categories {
+    width: 180px;
+    min-height: 32px;
+    height: auto;
+  }
+} 

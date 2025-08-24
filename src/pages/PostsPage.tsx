@@ -14,8 +14,20 @@ export default function PostsPage(){
   const [selectedAuthor, setSelectedAuthor] = useState<string>('Author')
   const [sortOrder, setSortOrder] = useState<string>('newest')
   console.log(posts, 'posts')
-  const authorMap = useMemo(() => new Map((authors ?? []).map(a => [a.id, a])), [authors])
-  const catMap = useMemo(() => new Map((categories ?? []).map(c => [c.id, c])), [categories])
+  console.log(authors, 'authors')
+  console.log(categories, 'categories')
+  
+  const authorMap = useMemo(() => {
+    const map = new Map((authors ?? []).map(a => [a.id, a]))
+    console.log('Author map:', map)
+    return map
+  }, [authors])
+  
+  const catMap = useMemo(() => {
+    const map = new Map((categories ?? []).map(c => [c.id, c]))
+    console.log('Category map:', map)
+    return map
+  }, [categories])
 
   const filtered = useMemo(() => {
     if(!posts) return []
@@ -75,6 +87,14 @@ export default function PostsPage(){
 
   if(isLoading) return <p>Loading posts…</p>
   if(isError) return <p>Failed to load posts.</p>
+  
+  // Debug info
+  console.log('PostsPage render:', {
+    postsCount: posts?.length || 0,
+    authorsCount: authors?.length || 0,
+    categoriesCount: categories?.length || 0,
+    filteredCount: filtered.length
+  })
 
   return (
     <section aria-labelledby="posts-heading">
@@ -86,14 +106,27 @@ export default function PostsPage(){
       </div>
       
       <div className="grid">
-        {filtered.map(p => (
-          <PostCard
-            key={p.id}
-            post={p}
-            author={authorMap.get(p.author_id)}
-            category={catMap.get(p.category_id)}
-          />
-        ))}
+        {filtered.map(p => {
+          // Try to get author from map, fallback to post.author if available
+          const author = authorMap.get(p.author_id) || p.author
+          const category = catMap.get(p.category_id)
+          console.log(`Post ${p.id}:`, { 
+            author_id: p.author_id, 
+            author, 
+            category_id: p.category_id, 
+            category,
+            hasPostAuthor: !!p.author
+          })
+          
+          return (
+            <PostCard
+              key={p.id}
+              post={p}
+              author={author}
+              category={category}
+            />
+          )
+        })}
       </div>
     </section>
   )

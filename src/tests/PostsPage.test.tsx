@@ -10,7 +10,7 @@ vi.mock('@/services/api', async () => {
   return {
     ...actual,
     useGetPostsQuery: () => ({ data: [{
-      id: 1, title: 'Hello', description: 'World', image_url: '', created_at: new Date().toISOString(), updated_at: '', author_id: 1, category_id: 1
+      id: 1, title: 'Hello', description: 'World', image_url: '', createdAt: new Date().toISOString(), updatedAt: '', author_id: 1, category_id: 1
     }], isLoading: false, isError: false }),
     useGetAuthorsQuery: () => ({ data: [{ id: 1, name: 'Jane', avatar_url: '' }], isLoading: false }),
     useGetCategoriesQuery: () => ({ data: [{ id: 1, name: 'News' }], isLoading: false }),

@@ -4,7 +4,7 @@
  */
 
 .app-bar {
-  background-color: var(--neutral-darkest);
+  background-color: var(--neutral-lightest);
   border-bottom: 1px solid var(--neutral-600);
   position: sticky;
   top: 0;
@@ -28,27 +28,27 @@
 
 .brand-logo {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.75rem;
 }
 
 .brand-name {
   font-family: var(--font-family);
-  font-size: var(--font-size-h3);
+  font-size: var(--font-size-h1);
   font-weight: var(--font-weight-bold);
   color: var(--neutral-darkest);
-  line-height: var(--line-height-h3);
+  line-height: var(--line-height-h1);
   margin: 0;
 }
 
 .brand-subtitle {
   font-family: var(--font-family);
-  font-size: var(--font-size-caption);
+  font-size: var(--font-size-body-small);
   font-weight: var(--font-weight-regular);
   color: var(--neutral-medium);
-  line-height: var(--line-height-caption);
+  line-height: var(--line-height-body);
   margin: 0;
-  margin-top: 0.125rem;
 }
 
 /* Search Section */
@@ -58,7 +58,7 @@
 }
 
 .search-toggle {
-  background-color: var(--neutral-darkest);
+  background-color: var(--primary-200);
   border: 2px solid var(--neutral-lightest);
   border-radius: 50%;
   width: 44px;
@@ -153,12 +153,12 @@
   }
   
   .brand-name {
-    font-size: var(--font-size-h2);
-    line-height: var(--line-height-h2);
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-h1);
   }
   
   .brand-subtitle {
-    font-size: var(--font-size-body-small);
+    font-size: var(--font-size-body-large);
     line-height: var(--line-height-body);
   }
   

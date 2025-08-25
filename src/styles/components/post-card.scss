@@ -7,7 +7,7 @@
 .post-card {
   width: 100%;
   max-width: none;
-  min-height: 380px;
+  min-height: 320px; /* Start with mobile height */
   height: auto;
   border-radius: 16px;
   background: var(--neutral-lightest);
@@ -20,14 +20,14 @@
 .post-card__image {
   width: 100%;
   height: 196px;
-  min-height: 196px;
+  min-height: 96px;
   object-fit: cover;
   border-radius: 16px 16px 0 0;
 }
 
 .post-card__content {
   flex: 1;
-  min-height: 184px;
+  min-height: 160px; /* Start with mobile height */
   height: auto;
   padding: 16px;
   display: flex;
@@ -39,7 +39,7 @@
 .post-card__text-container {
   width: 100%;
   max-width: none;
-  min-height: 114px; /* Title (54px) + gap (8px) + description (52px) */
+  min-height: 100px; /* Start with mobile height */
   height: auto;
   display: flex;
   flex-direction: column;
@@ -93,6 +93,14 @@
   overflow: hidden;
 }
 
+.post-card__title a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  width: 100%;
+}
+
 /* Description section */
 .post-card__description {
   min-height: 3rem;
@@ -115,7 +123,6 @@
   max-width: 180px;
   display: flex;
   gap: 12px;
-  margin-top: auto;
   flex-wrap: wrap;
   align-items: center;
   padding: 0 0 24px 0; /* Reduced space below categories */
@@ -140,11 +147,13 @@
   flex-shrink: 0;
   cursor: pointer;
   transition: all 0.2s ease;
+  text-decoration: none;
   
   &:hover {
     background: var(--neutral-100);
     border-color: var(--neutral-300);
     transform: translateY(-1px);
+    color: var(--accent-100);
   }
   
   &:active {
@@ -157,35 +166,71 @@
   .post-card {
     max-width: 100%;
     border-radius: 16px;
-    min-height: auto;
+    min-height: 380px; /* Set reasonable minimum height for mobile */
+    height: auto;
   }
   
   .post-card__image {
     border-radius: 16px 16px 0 0;
+    height: 160px; /* Slightly smaller image on mobile */
+    min-height: 160px;
   }
   
   .post-card__content {
     padding: 16px;
+    min-height: 160px; /* Ensure content has minimum height */
+    height: auto;
   }
   
   .post-card__text-container {
     max-width: 100%;
+    min-height: 100px; /* Ensure text container has minimum height */
+    height: auto;
+    gap: 0 !important; /* Force no gap between title and description */
+    display: flex;
+    flex-direction: column;
   }
   
   .post-card__title {
     -webkit-line-clamp: 2;
     max-height: 54px;
+    min-height: 34px;
+    margin: 0 0 8px 0; /* Reduced margin between title and description */
+    height: 3rem;
+    width: 100%;
+  }
+  
+  .post-card__title a {
+    height: 3rem !important;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: inherit;
   }
   
   .post-card__description {
     -webkit-line-clamp: 2;
     max-height: 52px;
+    min-height: 62px;
+    margin: 0 0 16px 0; /* Reduced margin below description */
   }
   
   .post-card__categories {
     max-width: 100%;
     justify-content: flex-start;
-    padding: 16px 0 32px 0;
+    padding: 0; /* Remove padding to eliminate gaps */
+    margin-top: 0; /* Remove auto margin */
+    display: flex !important; /* Force display on mobile */
+    gap: 8px; /* Add gap between category tags */
+    visibility: visible !important; /* Ensure visibility */
+    opacity: 1 !important; /* Ensure opacity */
+  }
+  
+  .post-card__category {
+    min-width: 80px; /* Slightly smaller on mobile */
+    height: 28px; /* Smaller height on mobile */
+    padding: 6px 10px; /* Reduced padding on mobile */
+    font-size: var(--font-size-caption);
   }
 }
 
@@ -194,14 +239,55 @@
   .post-card {
     max-width: none;
     border-radius: 16px;
+    min-height: 450px; /* Increased height for tablet to prevent truncation */
+    height: auto;
   }
   
   .post-card__image {
     border-radius: 16px 16px 0 0;
+    height: 180px; /* Medium image height for tablet */
+    min-height: 180px;
   }
   
   .post-card__content {
     padding: 18px;
+    min-height: 190px; /* Increased content height for tablet */
+    height: auto;
+  }
+  
+  .post-card__text-container {
+    min-height: 130px; /* Increased text container height for tablet */
+    height: auto;
+    gap: 0;
+  }
+
+  .post-card__title {
+    height: auto; /* Allow title to expand naturally */
+    min-height: 4rem; /* Minimum height instead of fixed height */
+    max-height: none; /* Remove max-height constraint */
+    width: 100%;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .post-card__title a {
+    height: auto !important; /* Allow link to expand naturally */
+    min-height: 4rem;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .post-card__description {
+    min-height: 3rem;
+    height: auto;
+    margin: 0 0 16px 0;
+  }
+  
+  .post-card__categories {
+    margin-top: auto; /* Push categories to bottom */
+    padding: 0 0 20px 0;
   }
 }
 
@@ -209,8 +295,9 @@
 @media (min-width: 1024px) {
   .post-card {
     max-width: none;
-    min-height: 380px;
-    height: auto;
+    width: 100%;
+    min-height: 320px;
+    height: 460px;
   }
   
   .post-card__content {
@@ -228,5 +315,34 @@
     width: 100%;
     min-height: 32px;
     height: auto;
+  }
+
+  .post-card__title {
+    max-height: 3rem;
+    width: 100%;
+    height: 3rem;
+  }
+  
+  .post-card__title a {
+    height: 3rem !important;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .post-card__description{
+    min-height: 62px;
+    max-height: 62px;
+  }
+
+  .post-card__categories{
+    min-height: 32px;
+    max-height: 32px;
+  }
+
+  .post-card__category{
+    min-width: 80px;
+    max-width: 80px;
   }
 } 

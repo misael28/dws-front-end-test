@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { useGetAuthorsQuery, useGetCategoriesQuery, useGetPostsQuery } from '@/services/api'
 import PostCard from '@/components/PostCard'
 import DesktopFilter from '@/components/DesktopFilter'
@@ -9,29 +9,12 @@ export default function PostsPage(){
   const { data: posts, isLoading, isError } = useGetPostsQuery()
   const { data: authors } = useGetAuthorsQuery()
   const { data: categories } = useGetCategoriesQuery()
+  
+  // Get filter state from Redux
   const search = useAppSelector(s => s.ui.search).toLowerCase()
-  
-  // Filter states
-  const [selectedCategory, setSelectedCategory] = useState<string>('Category')
-  const [selectedAuthor, setSelectedAuthor] = useState<string>('Author')
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
-  const [selectedAuthors, setSelectedAuthors] = useState<string[]>([])
-  const [sortOrder, setSortOrder] = useState<string>('newest')
-  console.log(posts, 'posts')
-  console.log(authors, 'authors')
-  console.log(categories, 'categories')
-  
-  const authorMap = useMemo(() => {
-    const map = new Map((authors ?? []).map(a => [a.id, a]))
-    console.log('Author map:', map)
-    return map
-  }, [authors])
-  
-  const catMap = useMemo(() => {
-    const map = new Map((categories ?? []).map(c => [c.id, c]))
-    console.log('Category map:', map)
-    return map
-  }, [categories])
+  const selectedCategories = useAppSelector(s => s.filter.selectedCategories)
+  const selectedAuthors = useAppSelector(s => s.filter.selectedAuthors)
+  const sortOrder = useAppSelector(s => s.filter.sortOrder)
 
   const filtered = useMemo(() => {
     if(!posts) return []
@@ -46,16 +29,16 @@ export default function PostsPage(){
       )
     }
     
-    // Apply category filter
-    if(selectedCategory !== 'Category' && selectedCategory !== 'All Categories') {
+    // Apply category filter (using Redux state)
+    if(selectedCategories.length > 0) {
       filteredPosts = filteredPosts.filter(p => 
-        p.categories.some(cat => cat.name === selectedCategory)
+        p.categories.some(cat => selectedCategories.includes(cat.id))
       )
     }
     
-    // Apply author filter
-    if(selectedAuthor !== 'Author' && selectedAuthor !== 'All Authors') {
-      filteredPosts = filteredPosts.filter(p => p.author.name === selectedAuthor)
+    // Apply author filter (using Redux state)
+    if(selectedAuthors.length > 0) {
+      filteredPosts = filteredPosts.filter(p => selectedAuthors.includes(p.author.id))
     }
     
     // Apply sorting
@@ -70,64 +53,24 @@ export default function PostsPage(){
     }
     
     return filteredPosts
-  }, [posts, search, selectedCategory, selectedAuthor, sortOrder, categories, authors])
+  }, [posts, search, selectedCategories, selectedAuthors, sortOrder])
 
-  // Filter handlers
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category)
-  }
-
-  const handleAuthorChange = (author: string) => {
-    setSelectedAuthor(author)
-  }
-
+  // Sort handler - will be integrated with Redux in the future
   const handleSortChange = (sort: string) => {
-    setSortOrder(sort)
+    console.log('Sort changed to:', sort)
   }
 
-  // Desktop filter handlers
-  const handleDesktopCategoryChange = (categoryId: string) => {
-    setSelectedCategories(prev => 
-      prev.includes(categoryId) 
-        ? prev.filter(id => id !== categoryId)
-        : [...prev, categoryId]
-    )
-  }
-
-  const handleDesktopAuthorChange = (authorId: string) => {
-    setSelectedAuthors(prev => 
-      prev.includes(authorId) 
-        ? prev.filter(id => id !== authorId)
-        : [...prev, authorId]
-    )
-  }
-
-  const handleApplyFilters = () => {
-    // Apply desktop filters to mobile filter state
-    if (selectedCategories.length > 0) {
-      const category = categories?.find(c => c.id === selectedCategories[0])
-      if (category) {
-        setSelectedCategory(category.name)
-      }
-    }
-    if (selectedAuthors.length > 0) {
-      const author = authors?.find(a => a.id === selectedAuthors[0])
-      if (author) {
-        setSelectedAuthor(author.name)
-      }
-    }
-  }
-
-  if(isLoading) return <p>Loading posts…</p>
-  if(isError) return <p>Failed to load posts.</p>
+  if(isLoading) return (
+    <div className="posts-loading">
+      <p>Loading posts...</p>
+    </div>
+  )
   
-  // Debug info
-  console.log('PostsPage render:', {
-    postsCount: posts?.length || 0,
-    authorsCount: authors?.length || 0,
-    categoriesCount: categories?.length || 0,
-    filteredCount: filtered.length
-  })
+  if(isError) return (
+    <div className="posts-error">
+      <p>Failed to load posts.</p>
+    </div>
+  )
 
   return (
     <section aria-labelledby="posts-heading">
@@ -146,11 +89,6 @@ export default function PostsPage(){
         <DesktopFilter
           categories={categories || []}
           authors={authors || []}
-          selectedCategories={selectedCategories}
-          selectedAuthors={selectedAuthors}
-          onCategoryChange={handleDesktopCategoryChange}
-          onAuthorChange={handleDesktopAuthorChange}
-          onApplyFilters={handleApplyFilters}
         />
         
         {/* Posts Grid */}

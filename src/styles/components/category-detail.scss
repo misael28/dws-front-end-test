@@ -1,30 +1,27 @@
 /*
- * Author Detail Page Styles
- * Comprehensive styling for individual author view
+ * Category Detail Page Styles
+ * Comprehensive styling for individual category view
  */
 
-.author-detail-container {
+.category-detail-container {
   height: 100vh;
-  width: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 0 1rem;
 }
 
-.author-detail {
-  max-width: 80%;
+.category-detail {
+  max-width: 800px;
   margin: 0 auto;
   padding: 2rem 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
   font-family: var(--font-family);
   flex: 1;
-  overflow-y: auto;
 }
 
 /* Navigation */
-.author-detail__nav {
+.category-detail__nav {
   margin-bottom: 2rem;
 }
 
@@ -60,37 +57,16 @@
 }
 
 /* Header Section */
-.author-detail__header {
+.category-detail__header {
   margin-bottom: 3rem;
   text-align: left;
 }
 
-.author-detail__profile {
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
+.category-detail__info {
+  text-align: left;
 }
 
-.author-detail__avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 4px solid var(--neutral-200);
-  flex-shrink: 0;
-  
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-.author-detail__info {
-  flex: 1;
-}
-
-.author-detail__name {
+.category-detail__name {
   font-family: var(--font-family);
   font-size: var(--font-size-h1);
   font-weight: var(--font-weight-bold);
@@ -100,30 +76,33 @@
   text-align: left;
 }
 
-.author-detail__meta {
+.category-detail__description {
+  font-size: var(--font-size-body-large);
+  color: var(--neutral-medium);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  margin: 0 0 1.5rem 0;
+  max-width: 600px;
+}
+
+.category-detail__meta {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.author-detail__join-date {
-  font-size: var(--font-size-body-large);
-  color: var(--neutral-medium);
-  font-weight: var(--font-weight-regular);
-}
-
-.author-detail__posts-count {
+.category-detail__posts-count {
   font-size: var(--font-size-body-large);
   color: var(--accent-100);
   font-weight: var(--font-weight-semibold);
 }
 
 /* Content Section */
-.author-detail__content {
+.category-detail__content {
   text-align: left;
 }
 
-.author-detail__section-title {
+.category-detail__section-title {
   font-family: var(--font-family);
   font-size: var(--font-size-h2);
   font-weight: var(--font-weight-bold);
@@ -133,13 +112,14 @@
   text-align: left;
 }
 
-.author-detail__posts {
+.category-detail__posts {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
+  width: 100%;
 }
 
-.author-detail__no-posts {
+.category-detail__no-posts {
   text-align: center;
   padding: 3rem 1rem;
   
@@ -151,8 +131,8 @@
 }
 
 /* Loading and Error States */
-.author-detail-loading,
-.author-detail-error {
+.category-detail-loading,
+.category-detail-error {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -162,12 +142,12 @@
   font-family: var(--font-family);
 }
 
-.author-detail-loading p {
+.category-detail-loading p {
   font-size: var(--font-size-body-large);
   color: var(--neutral-medium);
 }
 
-.author-detail-error p {
+.category-detail-error p {
   font-size: var(--font-size-body-large);
   color: var(--neutral-darkest);
   margin-bottom: 1rem;
@@ -185,57 +165,47 @@
 
 /* Responsive Design */
 @media (min-width: 768px) {
-  .author-detail {
+  .category-detail {
     padding: 2rem 2rem;
     padding-left: 1rem;
     padding-right: 1rem;
   }
   
-  .author-detail__posts {
+  .category-detail__posts {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
   
-  .author-detail__profile {
-    gap: 2.5rem;
-  }
-  
-  .author-detail__avatar {
-    width: 140px;
-    height: 140px;
+  .category-detail__description {
+    margin-bottom: 2rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .author-detail {
+  .category-detail {
     padding: 3rem 2rem;
     padding-left: 1rem;
     padding-right: 1rem;
     max-width: none; /* Allow growth on desktop */
   }
   
-  .author-detail-container {
+  .category-detail-container {
     padding-left: 1rem;
     padding-right: 1rem;
   }
   
-  .author-detail__posts {
+  .category-detail__posts {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
   }
   
-  .author-detail__profile {
-    gap: 3rem;
-  }
-  
-  .author-detail__avatar {
-    width: 160px;
-    height: 160px;
+  .category-detail__description {
+    margin-bottom: 2.5rem;
   }
 }
 
 @media (min-width: 1280px) {
-  .author-detail {
+  .category-detail {
     padding: 3rem 3rem;
     padding-left: 1rem;
     padding-right: 1rem;

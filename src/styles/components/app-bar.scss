@@ -19,6 +19,8 @@
   padding: 1rem;
   max-width: 1200px;
   margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /* Brand Section */
@@ -95,6 +97,7 @@
   padding: 0.5rem 1rem;
   min-width: 200px;
   animation: slideIn 0.2s ease-out;
+  position: relative;
 }
 
 .search-input {
@@ -170,9 +173,56 @@
 @media (min-width: 1024px) {
   .app-bar__container {
     padding: 1.5rem 2rem;
+    max-width: none; /* Allow container to grow with screen */
   }
   
   .search-expanded {
     min-width: 400px;
   }
+}
+
+/* Search Dropdown Styles */
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--neutral-lightest);
+  border: 1px solid var(--neutral-200);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  margin-top: 0.5rem;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.dropdown-categories {
+  padding: 0.5rem 0;
+}
+
+.dropdown-category {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: var(--neutral-100);
+  }
+}
+
+.category-name {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-large);
+  color: var(--neutral-darkest);
+  font-weight: var(--font-weight-regular);
+}
+
+.dropdown-no-results,
+.dropdown-placeholder {
+  padding: 1rem;
+  text-align: center;
+  color: var(--neutral-medium);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-large);
 } 

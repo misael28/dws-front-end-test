@@ -13,7 +13,12 @@
   height: fit-content;
   align-self: flex-start;
   position: sticky;
-  top: 0.1rem;
+  top: 1rem;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  z-index: 10;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
 }
 
 /* Filter Header */
@@ -44,6 +49,10 @@
 /* Filter Sections */
 .desktop-filter__section {
   margin-bottom: 2rem;
+}
+
+.desktop-filter__section:last-child {
+  margin-bottom: 1rem;
 }
 
 .desktop-filter__section-title {
@@ -112,7 +121,10 @@
   line-height: var(--line-height-body);
   cursor: pointer;
   transition: all 0.2s ease;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 5;
 }
 
 .desktop-filter__apply-btn:hover {
@@ -128,6 +140,8 @@
 /* Desktop Only - Show the filter */
 @media (min-width: 1024px) {
   .desktop-filter {
-    display: block;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 } 

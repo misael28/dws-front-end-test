@@ -46,9 +46,13 @@ export default function PostCard({ post }: { post: Post }){
         <div className="post-card__categories">
           {post.categories && post.categories.length > 0 ? (
             <>
-              <span className="post-card__category">{post.categories[0].name}</span>
+              <Link to={`/category/${post.categories[0].id}`} className="post-card__category">
+                {post.categories[0].name}
+              </Link>
               {post.categories[1] && (
-                <span className="post-card__category">{post.categories[1].name}</span>
+                <Link to={`/category/${post.categories[1].id}`} className="post-card__category">
+                  {post.categories[1].name}
+                </Link>
               )}
             </>
           ) : (

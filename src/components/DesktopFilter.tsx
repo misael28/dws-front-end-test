@@ -1,25 +1,38 @@
 import { useState } from 'react'
+import { useAppSelector, useAppDispatch } from '@/app/hooks'
+import { addCategory, removeCategory, addAuthor, removeAuthor } from '@/app/filterSlice'
 import type { Category, Author } from '@/types'
 
 interface DesktopFilterProps {
   categories: Category[]
   authors: Author[]
-  selectedCategories: string[]
-  selectedAuthors: string[]
-  onCategoryChange: (categoryId: string) => void
-  onAuthorChange: (authorId: string) => void
-  onApplyFilters: () => void
 }
 
 export default function DesktopFilter({
   categories,
-  authors,
-  selectedCategories,
-  selectedAuthors,
-  onCategoryChange,
-  onAuthorChange,
-  onApplyFilters
+  authors
 }: DesktopFilterProps) {
+  const dispatch = useAppDispatch()
+  
+  const selectedCategories = useAppSelector(state => state.filter.selectedCategories)
+  const selectedAuthors = useAppSelector(state => state.filter.selectedAuthors)
+
+  const handleCategoryChange = (categoryId: string) => {
+    if (selectedCategories.includes(categoryId)) {
+      dispatch(removeCategory(categoryId))
+    } else {
+      dispatch(addCategory(categoryId))
+    }
+  }
+  
+  const handleAuthorChange = (authorId: string) => {
+    if (selectedAuthors.includes(authorId)) {
+      dispatch(removeAuthor(authorId))
+    } else {
+      dispatch(addAuthor(authorId))
+    }
+  }
+
   return (
     <aside className="desktop-filter">
       <div className="desktop-filter__header">
@@ -37,8 +50,8 @@ export default function DesktopFilter({
             <label key={category.id} className="desktop-filter__option">
               <input
                 type="checkbox"
-                checked={selectedCategories.includes(category.id.toString())}
-                onChange={() => onCategoryChange(category.id.toString())}
+                checked={selectedCategories.includes(category.id)}
+                onChange={() => handleCategoryChange(category.id)}
                 className="desktop-filter__checkbox"
               />
               <span className="desktop-filter__option-text">{category.name}</span>
@@ -54,8 +67,8 @@ export default function DesktopFilter({
             <label key={author.id} className="desktop-filter__option">
               <input
                 type="checkbox"
-                checked={selectedAuthors.includes(author.id.toString())}
-                onChange={() => onAuthorChange(author.id.toString())}
+                checked={selectedAuthors.includes(author.id)}
+                onChange={() => handleAuthorChange(author.id)}
                 className="desktop-filter__checkbox"
               />
               <span className="desktop-filter__option-text">{author.name}</span>
@@ -66,9 +79,9 @@ export default function DesktopFilter({
 
       <button 
         className="desktop-filter__apply-btn"
-        onClick={onApplyFilters}
+        onClick={() => {}} // No need for apply filters since it's real-time
       >
-        Apply filters
+        Filters Applied
       </button>
     </aside>
   )

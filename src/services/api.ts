@@ -29,8 +29,9 @@ export const api = createApi({
       query: () => 'categories/',
       providesTags: [{ type: 'Categories', id: 'LIST' }]
     }),
-    getCategory: builder.query<Category, number>({
-      query: (id) => `categories/${id}`
+    getCategory: builder.query<Category, string>({
+      query: (id) => `categories/${id}`,
+      providesTags: (_res, _err, id) => [{ type: 'Categories', id }]
     }),
   })
 })

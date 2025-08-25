@@ -75,11 +75,13 @@ export default function PostDetailPage(){
               </div>
             )}
             
-            {category && (
-              <div className="post-detail__category">
-                <span className="category-tag">{category.name}</span>
-              </div>
-            )}
+                      {category && (
+            <div className="post-detail__category">
+              <Link to={`/category/${category.id}`} className="category-tag">
+                {category.name}
+              </Link>
+            </div>
+          )}
           </div>
         </header>
 

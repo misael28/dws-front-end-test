@@ -70,6 +70,12 @@
 
 .post-card__author {
   color: var(--neutral-darkest);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: var(--accent-100);
+  }
 }
 
 /* Title section */

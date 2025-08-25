@@ -1,14 +1,18 @@
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setSelectedPostId } from '@/app/uiSlice'
 import type { Post, Author, Category } from '@/types'
 
-export default function PostCard({ post, author, category }: { post: Post; author?: Author; category?: Category; }){
-  // Handle both cases: author prop or post.author
-  const postAuthor = author || post.author
-  console.log('PostCard author:', { author, postAuthor, postAuthorId: post.author_id })
+export default function PostCard({ post }: { post: Post }){
+  const dispatch = useDispatch()
+  
+  const handlePostClick = () => {
+    dispatch(setSelectedPostId(post.id))
+  }
   
   return (
     <article className="post-card">
-      <Link to={`/post/${post.id}`} aria-label={`Open post ${post.title}`}>
+      <Link to={`/post/${post.id}`} aria-label={`Open post ${post.title}`} onClick={handlePostClick}>
         <img className="post-card__image" src={post.thumbnail_url ?? post.image_url} alt="" loading="lazy" />
       </Link>
       
@@ -23,15 +27,15 @@ export default function PostCard({ post, author, category }: { post: Post; autho
             })}
           </span>
           <span className="post-card__separator"></span>
-          <span className="post-card__author">
-            {postAuthor ? postAuthor.name : 'Unknown Author'}
-          </span>
+          <Link to={`/author/${post.author.id}`} className="post-card__author">
+            {post.author ? post.author.name : 'Unknown Author'}
+          </Link>
         </div>
 
         {/* Text Container */}
         <div className="post-card__text-container">
           <h3 className="post-card__title">
-            <Link to={`/post/${post.id}`}>{post.title}</Link>
+            <Link to={`/post/${post.id}`} onClick={handlePostClick}>{post.title}</Link>
           </h3>
           <p className="post-card__description">
             {post.description || post.content || 'No description available'}
@@ -40,10 +44,12 @@ export default function PostCard({ post, author, category }: { post: Post; autho
 
         {/* Categories */}
         <div className="post-card__categories">
-          {category ? (
+          {post.categories && post.categories.length > 0 ? (
             <>
-              <span className="post-card__category">{category.name}</span>
-              <span className="post-card__category">{category.name}</span>
+              <span className="post-card__category">{post.categories[0].name}</span>
+              {post.categories[1] && (
+                <span className="post-card__category">{post.categories[1].name}</span>
+              )}
             </>
           ) : (
             <>

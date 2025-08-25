@@ -10,6 +10,8 @@
 @use './components/post-card.scss';
 @use './components/desktop-filter.scss';
 @use './components/sort-control.scss';
+@use './components/post-detail.scss';
+@use './components/author-detail.scss';
 
 /* Mobile-first base styles */
 :root {
@@ -79,8 +81,8 @@ section[aria-labelledby="posts-heading"] {
 }
 
 /* Post Detail Page Container */
-article {
-  height: 100vh;
+article.post-detail {
+  height: 100%;
   overflow-y: auto;
   padding: 1rem;
   max-width: 1200px;

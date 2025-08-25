@@ -1,27 +1,27 @@
 export interface Post {
-  id: number;
+  id: string;
   title: string;
-  description: string;
-  image_url: string;
+  description?: string;
+  image_url?: string;
+  thumbnail_url?: string;
   createdAt: string;
   updatedAt: string;
-  author_id: number;
-  category_id: number;
   content?: string;
-  thumbnail_url?: string;
-  author?: Author;
+  author: Author;
+  categories: Category[];
 }
 
 export interface Author {
-  createdAt: string;
-  id: number;
+  id: string;
   name: string;
   avatar_url: string;
+  createdAt: string;
   updatedAt: string;
+  profilePicture: string;
 }
 
 export interface Category {
-  id: number;
+  id: string;
   name: string;
   description?: string;
 }

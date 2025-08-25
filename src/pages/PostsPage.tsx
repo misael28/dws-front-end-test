@@ -48,18 +48,14 @@ export default function PostsPage(){
     
     // Apply category filter
     if(selectedCategory !== 'Category' && selectedCategory !== 'All Categories') {
-      const category = categories?.find(c => c.name === selectedCategory)
-      if(category) {
-        filteredPosts = filteredPosts.filter(p => p.category_id === category.id)
-      }
+      filteredPosts = filteredPosts.filter(p => 
+        p.categories.some(cat => cat.name === selectedCategory)
+      )
     }
     
     // Apply author filter
     if(selectedAuthor !== 'Author' && selectedAuthor !== 'All Authors') {
-      const author = authors?.find(a => a.name === selectedAuthor)
-      if(author) {
-        filteredPosts = filteredPosts.filter(p => p.author_id === author.id)
-      }
+      filteredPosts = filteredPosts.filter(p => p.author.name === selectedAuthor)
     }
     
     // Apply sorting
@@ -109,13 +105,13 @@ export default function PostsPage(){
   const handleApplyFilters = () => {
     // Apply desktop filters to mobile filter state
     if (selectedCategories.length > 0) {
-      const category = categories?.find(c => c.id.toString() === selectedCategories[0])
+      const category = categories?.find(c => c.id === selectedCategories[0])
       if (category) {
         setSelectedCategory(category.name)
       }
     }
     if (selectedAuthors.length > 0) {
-      const author = authors?.find(a => a.id.toString() === selectedAuthors[0])
+      const author = authors?.find(a => a.id === selectedAuthors[0])
       if (author) {
         setSelectedAuthor(author.name)
       }
@@ -159,27 +155,12 @@ export default function PostsPage(){
         
         {/* Posts Grid */}
         <div className="posts-grid">
-          {filtered.map(p => {
-            // Try to get author from map, fallback to post.author if available
-            const author = authorMap.get(p.author_id) || p.author
-            const category = catMap.get(p.category_id)
-            console.log(`Post ${p.id}:`, { 
-              author_id: p.author_id, 
-              author, 
-              category_id: p.category_id, 
-              category,
-              hasPostAuthor: !!p.author
-            })
-            
-            return (
-              <PostCard
-                key={p.id}
-                post={p}
-                author={author}
-                category={category}
-              />
-            )
-          })}
+          {filtered.map(p => (
+            <PostCard
+              key={p.id}
+              post={p}
+            />
+          ))}
         </div>
       </div>
     </section>

@@ -13,7 +13,7 @@ export const api = createApi({
         { type: 'Posts', id: 'LIST' }
       ] : [{ type: 'Posts', id: 'LIST' }]
     }),
-    getPost: builder.query<Post, number>({
+    getPost: builder.query<Post, string>({
       query: (id) => `posts/${id}`,
       providesTags: (_res, _err, id) => [{ type: 'Post', id }]
     }),
@@ -21,8 +21,9 @@ export const api = createApi({
       query: () => 'authors/',
       providesTags: [{ type: 'Authors', id: 'LIST' }]
     }),
-    getAuthor: builder.query<Author, number>({
-      query: (id) => `authors/${id}`
+    getAuthor: builder.query<Author, string>({
+      query: (id) => `authors/${id}`,
+      providesTags: (_res, _err, id) => [{ type: 'Authors', id }]
     }),
     getCategories: builder.query<Category[], void>({
       query: () => 'categories/',

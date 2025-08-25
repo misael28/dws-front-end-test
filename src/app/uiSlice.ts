@@ -3,11 +3,13 @@ import { createSlice } from '@reduxjs/toolkit'
 interface UIState {
   theme: 'light' | 'dark'
   search: string
+  selectedPostId: string | null
 }
 
 const initialState: UIState = {
   theme: 'light',
-  search: ''
+  search: '',
+  selectedPostId: null
 }
 
 const uiSlice = createSlice({
@@ -15,9 +17,14 @@ const uiSlice = createSlice({
   initialState,
   reducers: {
     toggleTheme(state){ state.theme = state.theme === 'light' ? 'dark' : 'light' },
-    setSearch(state, {payload}){ state.search = payload }
+    setSearch(state, {payload}){ 
+      state.search = payload 
+    },
+    setSelectedPostId(state, {payload}: {payload: string | null}){ 
+      state.selectedPostId = payload 
+    }
   }
 })
 
-export const { toggleTheme, setSearch } = uiSlice.actions
+export const { toggleTheme, setSearch, setSelectedPostId } = uiSlice.actions
 export default uiSlice.reducer

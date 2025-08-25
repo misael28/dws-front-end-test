@@ -1,0 +1,133 @@
+/*
+ * Desktop Filter Component Styles
+ * Desktop-only sidebar filter panel
+ */
+
+.desktop-filter {
+  display: none; /* Hidden by default on mobile */
+  width: 280px;
+  background-color: var(--neutral-lightest);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  align-self: flex-start;
+  position: sticky;
+  top: 0.1rem;
+}
+
+/* Filter Header */
+.desktop-filter__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.desktop-filter__icon {
+  color: var(--neutral-darkest);
+  width: 20px;
+  height: 20px;
+}
+
+.desktop-filter__title {
+  font-family: var(--font-family);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--neutral-darkest);
+  line-height: var(--line-height-h3);
+  margin: 0;
+}
+
+/* Filter Sections */
+.desktop-filter__section {
+  margin-bottom: 2rem;
+}
+
+.desktop-filter__section-title {
+  font-family: var(--font-family);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--neutral-darkest);
+  line-height: var(--line-height-h3);
+  margin: 0 0 1rem 0;
+}
+
+.desktop-filter__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.desktop-filter__option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--neutral-100);
+  transition: all 0.2s ease;
+}
+
+.desktop-filter__option:last-child {
+  border-bottom: none;
+}
+
+.desktop-filter__option:hover {
+  background-color: var(--neutral-100);
+  border-radius: 8px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.desktop-filter__checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--secondary-100);
+  cursor: pointer;
+}
+
+.desktop-filter__option-text {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-regular);
+  color: var(--neutral-medium);
+  line-height: var(--line-height-body);
+  flex: 1;
+}
+
+/* Apply Filters Button */
+.desktop-filter__apply-btn {
+  width: 100%;
+  background-color: var(--secondary-100);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+}
+
+.desktop-filter__apply-btn:hover {
+  background-color: var(--secondary-200);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239, 76, 132, 0.3);
+}
+
+.desktop-filter__apply-btn:active {
+  transform: translateY(0);
+}
+
+/* Desktop Only - Show the filter */
+@media (min-width: 1024px) {
+  .desktop-filter {
+    display: block;
+  }
+} 

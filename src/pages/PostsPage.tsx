@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react'
 import { useGetAuthorsQuery, useGetCategoriesQuery, useGetPostsQuery } from '@/services/api'
 import PostCard from '@/components/PostCard'
+import DesktopFilter from '@/components/DesktopFilter'
+import SortControl from '@/components/SortControl'
 import { useAppSelector } from '@/app/hooks'
 
 export default function PostsPage(){
@@ -12,6 +14,8 @@ export default function PostsPage(){
   // Filter states
   const [selectedCategory, setSelectedCategory] = useState<string>('Category')
   const [selectedAuthor, setSelectedAuthor] = useState<string>('Author')
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+  const [selectedAuthors, setSelectedAuthors] = useState<string[]>([])
   const [sortOrder, setSortOrder] = useState<string>('newest')
   console.log(posts, 'posts')
   console.log(authors, 'authors')
@@ -85,6 +89,39 @@ export default function PostsPage(){
     setSortOrder(sort)
   }
 
+  // Desktop filter handlers
+  const handleDesktopCategoryChange = (categoryId: string) => {
+    setSelectedCategories(prev => 
+      prev.includes(categoryId) 
+        ? prev.filter(id => id !== categoryId)
+        : [...prev, categoryId]
+    )
+  }
+
+  const handleDesktopAuthorChange = (authorId: string) => {
+    setSelectedAuthors(prev => 
+      prev.includes(authorId) 
+        ? prev.filter(id => id !== authorId)
+        : [...prev, authorId]
+    )
+  }
+
+  const handleApplyFilters = () => {
+    // Apply desktop filters to mobile filter state
+    if (selectedCategories.length > 0) {
+      const category = categories?.find(c => c.id.toString() === selectedCategories[0])
+      if (category) {
+        setSelectedCategory(category.name)
+      }
+    }
+    if (selectedAuthors.length > 0) {
+      const author = authors?.find(a => a.id.toString() === selectedAuthors[0])
+      if (author) {
+        setSelectedAuthor(author.name)
+      }
+    }
+  }
+
   if(isLoading) return <p>Loading posts…</p>
   if(isError) return <p>Failed to load posts.</p>
   
@@ -99,34 +136,51 @@ export default function PostsPage(){
   return (
     <section aria-labelledby="posts-heading">
       <div className="page-header">
-        <h1 id="posts-heading" className="h1">Posts</h1>
-        <p className="body-large text-neutral-400">
-          Discover insights and stories from our team
-        </p>
+        <div className="page-header__content">
+          <h1 id="posts-heading" className="h1">DWS blog</h1>
+        </div>
+        <SortControl 
+          currentSort={sortOrder}
+          onSortChange={handleSortChange}
+        />
       </div>
       
-      <div className="grid">
-        {filtered.map(p => {
-          // Try to get author from map, fallback to post.author if available
-          const author = authorMap.get(p.author_id) || p.author
-          const category = catMap.get(p.category_id)
-          console.log(`Post ${p.id}:`, { 
-            author_id: p.author_id, 
-            author, 
-            category_id: p.category_id, 
-            category,
-            hasPostAuthor: !!p.author
-          })
-          
-          return (
-            <PostCard
-              key={p.id}
-              post={p}
-              author={author}
-              category={category}
-            />
-          )
-        })}
+      <div className="posts-layout">
+        {/* Desktop Filter Sidebar */}
+        <DesktopFilter
+          categories={categories || []}
+          authors={authors || []}
+          selectedCategories={selectedCategories}
+          selectedAuthors={selectedAuthors}
+          onCategoryChange={handleDesktopCategoryChange}
+          onAuthorChange={handleDesktopAuthorChange}
+          onApplyFilters={handleApplyFilters}
+        />
+        
+        {/* Posts Grid */}
+        <div className="posts-grid">
+          {filtered.map(p => {
+            // Try to get author from map, fallback to post.author if available
+            const author = authorMap.get(p.author_id) || p.author
+            const category = catMap.get(p.category_id)
+            console.log(`Post ${p.id}:`, { 
+              author_id: p.author_id, 
+              author, 
+              category_id: p.category_id, 
+              category,
+              hasPostAuthor: !!p.author
+            })
+            
+            return (
+              <PostCard
+                key={p.id}
+                post={p}
+                author={author}
+                category={category}
+              />
+            )
+          })}
+        </div>
       </div>
     </section>
   )

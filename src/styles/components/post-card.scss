@@ -6,7 +6,7 @@
 
 .post-card {
   width: 100%;
-  max-width: 314px;
+  max-width: none;
   min-height: 380px;
   height: auto;
   border-radius: 16px;
@@ -38,7 +38,7 @@
 /* Content container with specific dimensions */
 .post-card__text-container {
   width: 100%;
-  max-width: 282px; /* 314px - 32px (16px padding on each side) */
+  max-width: none;
   min-height: 114px; /* Title (54px) + gap (8px) + description (52px) */
   height: auto;
   display: flex;
@@ -186,7 +186,7 @@
 /* Tablet responsive adjustments */
 @media (min-width: 641px) and (max-width: 1023px) {
   .post-card {
-    max-width: 400px;
+    max-width: none;
     border-radius: 16px;
   }
   
@@ -202,7 +202,7 @@
 /* Desktop - maintain adjusted design specs but allow flexibility */
 @media (min-width: 1024px) {
   .post-card {
-    max-width: 314px;
+    max-width: none;
     min-height: 380px;
     height: auto;
   }
@@ -213,13 +213,13 @@
   }
   
   .post-card__text-container {
-    width: 282px;
+    width: 100%;
     min-height: 114px;
     height: auto;
   }
   
   .post-card__categories {
-    width: 180px;
+    width: 100%;
     min-height: 32px;
     height: auto;
   }

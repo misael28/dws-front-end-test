@@ -1,0 +1,141 @@
+/*
+ * Sort Control Component Styles
+ * Positioned at flex-end of page header
+ */
+
+.sort-control {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-family);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.sort-control__label {
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-semibold);
+  color: var(--neutral-darkest);
+  white-space: nowrap;
+}
+
+.sort-control__selection {
+  position: relative;
+}
+
+.sort-control__button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-regular);
+  color: var(--neutral-medium);
+  
+  &:hover {
+    background-color: var(--neutral-100);
+    color: var(--neutral-darkest);
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.sort-control__text {
+  white-space: nowrap;
+}
+
+.sort-control__icon {
+  color: var(--accent-100);
+  transition: transform 0.2s ease;
+  
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+.sort-control__dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--neutral-lightest);
+  border: 1px solid var(--neutral-200);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  margin-top: 0.5rem;
+  min-width: 160px;
+  animation: slideDown 0.2s ease-out;
+}
+
+.sort-control__option {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-large);
+  color: var(--neutral-darkest);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid var(--neutral-100);
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  &:hover {
+    background-color: var(--neutral-100);
+  }
+  
+  &.active {
+    background-color: var(--accent-100);
+    color: white;
+  }
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+  .sort-control {
+    gap: 0.5rem;
+  }
+  
+  .sort-control__label {
+    font-size: var(--font-size-body-small);
+  }
+  
+  .sort-control__button {
+    font-size: var(--font-size-body-small);
+    padding: 0.375rem 0.5rem;
+  }
+  
+  .sort-control__dropdown {
+    min-width: 140px;
+  }
+  
+  .sort-control__option {
+    font-size: var(--font-size-body-small);
+    padding: 0.625rem 0.875rem;
+  }
+} 

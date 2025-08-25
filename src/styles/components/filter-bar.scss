@@ -207,11 +207,7 @@
 }
 
 @media (min-width: 1024px) {
-  .filter-bar__container {
-    padding: 0 2rem;
-  }
-  
-  .filter-button {
-    min-width: 140px;
+  .filter-bar {
+    display: none;
   }
 } 
